@@ -34,24 +34,24 @@ export default function TextForm(props) {
   }
   return (
     <>
-      <div className='container'>
+      <div className='container' style={{color: props.mode === 'dark' ? 'white': '#042743'}}>
         <h1>{props.heading} </h1>
         <div className="mb-3">
-        <textarea className="form-control"  value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+        <textarea className="form-control"  value={text} onChange={handleOnChange} style={{backgroundColor: props.mode === 'dark' ? '#042743': 'white', color: props.mode === 'dark' ? 'white': '#042743' }} id="myBox" rows="8"></textarea>
         </div>
         <button className="btn btn-primary " onClick={handleUpClick}>Convert To Uppercase</button>
         <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert To Lowercase</button>
         <button className="btn btn-primary mx-1" onClick={handleAltClick}>Convert To ALT Case</button>
         <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear</button>
     </div>
-    <div className="conatiner my-3">
+    <div className="conatiner " style={{backgroundColor: props.mode === 'dark' ? '#042743': 'white', color: props.mode === 'dark' ? 'white': '#042743'}}>
       <h1>Your Text Summary</h1>
       <p>{text.split(" ").length} Words and {text.length} characters</p>
       <p>{text.split(".").length} Sentence Count</p>
       <p>{0.008 * text.split(" ").length} Minuites time needed to read these words</p>
       
       <h2>Preview</h2>
-      <p>{text}</p>
+      <p>{text.length>0?text:"Enter something In the text box to preview "}</p>
     </div>
     </>
     
