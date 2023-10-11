@@ -1,14 +1,14 @@
 import './App.css';
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import ReactDOM from 'react-dom/client';
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import About from './components/About';
+// import About from './components/About';
 import Alert from './components/Alert';
 
 
-export default function App() {
+function App() {
    const [mode, setMode] = useState('light');  //is dark mode enabled or not
    const [alert, setAlert] = useState(null);
 
@@ -19,7 +19,7 @@ export default function App() {
     })
     setTimeout(() => {
       setAlert(null);
-    }, 2000);
+    }, 1000);
    }
 
    const toggleMode = () =>{
@@ -37,41 +37,30 @@ export default function App() {
    }
   return (
     <>
-    {/* <Router>
-    <Navbar title = "DayOne1" mode={mode} toggleMode = {toggleMode} />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        <Switch>
-          <Route path='/About'>
-            <About />
-          </Route>
-          <Route path='/'>
-          <TextForm  showAlert={showAlert} heading ="Enter Your Text to Analyze"  mode={mode}/>
-          </Route>
-        </Switch>
-      </div>
-    </Router> */}
-
- 
-
- <BrowserRouter>
+ {/* <BrowserRouter> */}
       <Navbar title="DayOne" mode ={mode} toggleMode={toggleMode} />
       <Alert alert={alert}/>
       <div className="container my-3">
-      
-        <Routes>
-          <Route exact path="/" element={<TextForm heading = "Enter your text to analyse" mode ={mode} showAlert = {showAlert}/>} />
-          <Route  exact path="about" element={<About />} />
-        </Routes>
+        <TextForm heading = "Enter your text to analyse" mode ={mode} showAlert = {showAlert}/>
       </div>
-      </BrowserRouter>
+      
+        {/* <Routes>
+          <Route exact path="/" element={<TextForm heading = "Enter your text to analyse" mode ={mode} showAlert = {showAlert}/>} />
+          <Route  exact path="/about" element={<About />} />
+        </Routes> */}
+        
+      {/* </BrowserRouter> */}
     
+    {/* commenting out the reactDom part because it doesn't work well with
+    github page but it will work fine with the server. deleting this Just
+    deploy on github pages. */}
 
     </>
   );
 }
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<App />);
+export default App;
+//  const root = ReactDOM.createRoot(document.getElementById('root'));
+//  root.render(<App />);
 
 
